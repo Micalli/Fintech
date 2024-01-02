@@ -18,7 +18,11 @@ export class BankAccountsRepository {
     return this.prismaService.bankAccount.findFirst(findFirstDto);
   }
 
-  update(updateDto: Prisma.BankAccountUpdateArgs) {
+  update(updateDto: any) {
     return this.prismaService.bankAccount.update(updateDto);
+  }
+
+  delete(deleteDto: Prisma.BankAccountDeleteArgs) {
+    return this.prismaService.bankAccount.delete(deleteDto);
   }
 }

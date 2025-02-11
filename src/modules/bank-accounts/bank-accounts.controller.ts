@@ -52,6 +52,7 @@ export class BankAccountsController {
 
     @Param('bankAccountId', ParseUUIDPipe) bankAccountId: string,
   ) {
+    console.log('🚀 ~ BankAccountsController ~ ParseUUIDPipe:', ParseUUIDPipe);
     return this.bankAccountsService.remove(userId, bankAccountId);
   }
 }

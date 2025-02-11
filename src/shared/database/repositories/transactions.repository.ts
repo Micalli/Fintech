@@ -11,10 +11,6 @@ export class TransactionsRepository {
   }
 
   findMany(findManyDto: Prisma.TransactionFindManyArgs) {
-    console.log(
-      '🚀 ~ file: transactions.repository.ts:14 ~ TransactionsRepository ~ findMany ~ findManyDto:',
-      findManyDto,
-    );
     return this.prismaService.transaction.findMany(findManyDto);
   }
 

@@ -40,9 +40,10 @@ export class BankAccountsService {
     return bankAccounts.map(({ transactions, ...bankAccount }) => {
       const totalTransactions = transactions.reduce(
         (acc, transaction) =>
-          acc + transaction.type === 'INCOME'
+          acc +
+          (transaction.type === 'INCOME'
             ? transaction.value
-            : -transaction.value,
+            : -transaction.value),
         0,
       );
       const currentBalance = bankAccount.initialBalance + totalTransactions;
@@ -77,6 +78,10 @@ export class BankAccountsService {
   async remove(userId: string, bankAccountId: string) {
     this.validateBankAccountOwnershipService.validate(userId, bankAccountId);
 
+    console.log(
+      '🚀 ~ BankAccountsService ~ remove ~ bankAccountId:',
+      bankAccountId,
+    );
     await this.bankAccountsRepository.delete({
       where: { id: bankAccountId },
     });
